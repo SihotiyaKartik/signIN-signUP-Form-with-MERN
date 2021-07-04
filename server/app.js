@@ -1,9 +1,12 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cors = require('cors');
+var cookieParser = require('cookie-parser');
+var signinRouter = require('./routes/signin');
+
 require('./db/database');
-const app = express();
+var app = express();
 
 app.use(express.json());
 app.use(cors());
@@ -16,7 +19,7 @@ add routes here
 
 
 */
-
+app.use('/',signinRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
